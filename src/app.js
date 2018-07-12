@@ -10,7 +10,7 @@ import { startSetExpenses } from "./actions/expenses";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 
-import "./firebase/firebase";
+import { firebase } from "./firebase/firebase";
 
 const store = configureStore();
 const jsx = (
@@ -29,4 +29,13 @@ store.dispatch(startSetExpenses()).then(() => {
         jsx,
         document.getElementById("app")
     );
+});
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log("Log in");
+    } else {
+        console.log("Log out");
+    }
+
 });
