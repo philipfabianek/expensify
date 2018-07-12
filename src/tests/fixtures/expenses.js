@@ -13,7 +13,7 @@ const expenses = [
         description: "test2",
         note: "",
         amount: 2000,
-        createdAt: moment(0)
+        createdAt: moment(0).valueOf()
     },
     {
         id: "3",
