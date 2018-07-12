@@ -1,0 +1,124 @@
+// Firebase doesn't have default export, this
+// creates new variable with everything we need
+import * as firebase from "firebase";
+
+const config = {
+    apiKey: "AIzaSyCy6eD9Xu_kiLvg5tHTgTu_vCCKjxmfQsY",
+    authDomain: "expensify-7652c.firebaseapp.com",
+    databaseURL: "https://expensify-7652c.firebaseio.com",
+    projectId: "expensify-7652c",
+    storageBucket: "expensify-7652c.appspot.com",
+    messagingSenderId: "357830882163"
+};
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+
+database.ref("expenses").on("child_removed", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+database.ref("expenses").on("child_changed", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+database.ref("expenses").on("child_added", (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// database.ref("expenses")
+//     .once("value")
+//     .then((snapshot) => {
+//         const expenses = [];
+//
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             });
+//         });
+//
+//         console.log(expenses);
+//     });
+
+// const onValueChange = database.ref("expenses").on("value", (snapshot) => {
+//     const expenses = [];
+//
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//
+//     console.log(expenses);
+// });
+
+// const expenses = [
+//     {
+//         description: "Expense 1",
+//         note: "aaa",
+//         amount: 1000,
+//         createdAt: 12000
+//     }
+// ];
+//
+// expenses.map((expense) => {
+//     database.ref("expenses").push(expense);
+// });
+
+// database.ref("notes").push({
+//     title: "Course Topics",
+//     body: "The realest MERN"
+// });
+
+// const onValueChange = database.ref().on("value", (snapshot) => {
+//     const data = snapshot.val();
+//     console.log(`${data.name} is a ${data.job.title} at ${data.job.company}.`);
+// }, (error) => {
+//     console.log("Error fetching data", error);
+// });
+
+// database.ref("location/city")
+//     .once("value")
+//     .then((snapshot) => {
+//         const val = snapshot.val();
+//         console.log(val);
+//     })
+//     .catch((error) => {
+//         console.log("Error fetching data", error);
+//     });
+
+// database.ref().set({
+//     name: "Philip Fabianek",
+//     age: 16,
+//     stressLevel: 6,
+//     job: {
+//         title: "Web developer",
+//         company: "Google"
+//     },
+//     isSingle: true,
+//     location: {
+//         city: "Brno",
+//         country: "Czech Republic"
+//     }
+// }).then(() => {
+//     console.log("Data is saved");
+// }).catch((error) => {
+//     console.log("Operation failed.", error);
+// });
+//
+// database.ref().update({
+//     stressLevel: 9,
+//     "job/company": "Amazon",
+//     "location/city": "Seattle"
+// });
+
+// database.ref()
+//     .remove()
+//     .then(() => {
+//         console.log("Data was removed");
+//     }).catch((error) => {
+//         console.log("Operation failed", error);
+//     });
