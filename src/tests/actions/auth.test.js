@@ -3,7 +3,7 @@ import {
     logout
 } from "./../../actions/auth";
 
-test("should setup login action object", () => {
+test("should generate login action object", () => {
     const uid = "a1b2c3d4e5";
     const action = login(uid);
 
@@ -13,7 +13,7 @@ test("should setup login action object", () => {
     });
 });
 
-test("should setup logout action object", () => {
+test("should generate logout action object", () => {
     const action = logout();
 
     expect(action).toEqual({
