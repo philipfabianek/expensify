@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 // import TopHeader from "./../components/new/TopHeader";
-// import TopHeaderDrawer from "./../components/new/TopHeaderDrawer";
+import Interface from "./../components/new/Interface";
 // import Header from "./../components/Header";
 
 export const PrivateRoute = ({
@@ -19,8 +19,9 @@ export const PrivateRoute = ({
                     <div>
                         {/* <TopHeader /> */}
                         {/* <Header /> */}
-                        {/* <TopHeaderDrawer /> */}
-                        <Component {...props} />
+                        <Interface>
+                            <Component {...props} />
+                        </Interface>
                     </div>
                 ) : (
                     <Redirect to="/" />

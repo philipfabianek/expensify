@@ -4,16 +4,11 @@ import ExpenseList from "./ExpenseList";
 import ExpenseListFilters from "./ExpenseListFilters";
 import ExpensesSummary from "./ExpensesSummary";
 
-import TopHeaderDrawer from "./new/TopHeaderDrawer";
-import TopHeader from "./new/TopHeader";
-
-const ExpenseDashboardPage = () => (
+const ExpenseDashboardPage = (props) => (
     <div className="dashboard">
-        <TopHeaderDrawer />
-        {/* <TopHeader /> */}
-        {/* <ExpensesSummary /> */}
-        {/* <ExpenseListFilters /> */}
-        {/* <ExpenseList /> */}
+        <ExpensesSummary />
+        <ExpenseListFilters />
+        <ExpenseList />
     </div>
 );
 

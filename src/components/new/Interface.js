@@ -24,11 +24,11 @@ const styles = theme => ({
         height: "100%",
         zIndex: 1,
         overflow: 'hidden',
-        position: 'fixed',
         display: 'flex',
         width: '100%',
     },
     appBar: {
+        // position: 'fixed',
         position: 'absolute',
         zIndex: theme.zIndex.drawer + 1,
     },
@@ -49,6 +49,7 @@ const styles = theme => ({
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
             position: 'relative',
+            // position: 'fixed',
         },
     },
     content: {
@@ -88,17 +89,6 @@ class ResponsiveDrawer extends React.Component {
             <div className={classes.root}>
                 <AppBar className={classes.appBar}>
                     <Toolbar>
-                        {/* <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={this.handleDrawerToggle}
-                            className={classes.navIconHide}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="title" color="inherit" noWrap>
-                            Expensify
-                        </Typography> */}
                         <IconButton
                             className={classes.menuButton + " " + classes.navIconHide}
                             color="inherit"
@@ -125,10 +115,10 @@ class ResponsiveDrawer extends React.Component {
                         open={this.state.mobileOpen}
                         onClose={this.handleDrawerToggle}
                         classes={{
-                        paper: classes.drawerPaper,
+                            paper: classes.drawerPaper,
                         }}
                         ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                            keepMounted: true, // Better open performance on mobile.
                         }}
                     >
                         {drawer}
@@ -139,7 +129,7 @@ class ResponsiveDrawer extends React.Component {
                         variant="permanent"
                         open
                         classes={{
-                        paper: classes.drawerPaper,
+                            paper: classes.drawerPaper,
                         }}
                     >
                         {drawer}
@@ -147,7 +137,8 @@ class ResponsiveDrawer extends React.Component {
                 </Hidden>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
+                    {/* <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography> */}
+                    {this.props.children}
                 </main>
             </div>
         );
