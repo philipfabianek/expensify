@@ -5,4 +5,11 @@
 @import "./base/settings";
 @import "./base/base";
 
+// Mixins imports
+@import "./mixins/media-queries";
+@import "./mixins/boilerplate-properties";
+@import "./mixins/browser-specific-properties.scss";
+@import "./mixins/transitions";
+
 // Components imports
+@import "./components/login";

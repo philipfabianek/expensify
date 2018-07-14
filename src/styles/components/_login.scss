@@ -1,0 +1,186 @@
+.login {
+    background-image: url("./../../assets/main.svg");
+    background-size: 120rem;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+
+    @media screen and (min-height: 600px) {
+        background-size: 192rem;
+    }
+
+    @include atMedium {
+        background-size: 180rem;
+        position: static;
+        transform: none;
+    }
+
+    @include atLarge {
+        background-size: 192rem;
+    }
+
+    &__container {
+        max-height: 100vh;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    &__content {
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-60%);
+        width: 100%;
+
+        @include atSmall {
+            transform: translateY(-70%);
+        }
+
+        h1 {
+            color: $white;
+            font-family: "Lato", sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            width: 100%;
+
+            @include atSmall {
+                font-size: 5rem;
+                letter-spacing: 12px;
+            }
+
+            @include atMedium {
+                font-size: 6.6rem;
+                letter-spacing: 18px;
+            }
+
+            @include atLarge {
+                font-size: 8rem;
+                letter-spacing: 25px;
+            }
+        }
+
+        h2 {
+            color: $white;
+            display: inline-block;
+            font-family: "Lato", sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 140%;
+            margin-top: 2.4rem;
+            max-width: 88vw;
+
+            @include atSmall {
+                font-size: 2.4rem;
+                letter-spacing: 2.5px;
+                margin-top: 2.6rem;
+            }
+
+            @include atMedium {
+                font-size: 2.7rem;
+                letter-spacing: 3px;
+                margin-top: 2.8rem;
+            }
+
+            @include atLarge {
+                font-size: 3rem;
+                letter-spacing: 3px;
+                margin-top: 2.2rem;
+            }
+        }
+
+        button {
+            background-color: #fff;
+            display: block;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin: 0 auto;
+            margin-top: 2.8rem;
+            padding: 1rem 3rem;
+
+            @include atSmall {
+
+            }
+
+            @include atMedium {
+                margin-top: 3.2rem;
+            }
+
+            @include atLarge {
+
+            }
+        }
+    }
+
+    // &__more {
+    //     min-height: 100vh;
+    // }
+}
+
+// .login {
+//     & {
+//         background-image: url("./../../assets/login--3840x2160.jpg");
+//         background-position: center;
+//         background-size: cover;
+//         min-height: 100vh;
+//         min-width: 100vw;
+//         text-align: center;
+//     }
+//
+//     &__content {
+//         background-color: rgba($white, .78);
+//         box-shadow: 0 0 10rem 10rem rgba($white, .78);
+//         padding: .4rem 0;
+//         position: absolute;
+//         top: 32%;
+//         width: 100%;
+//
+//         h1 {
+//             color: #222;
+//             font-family: "Lato", sans-serif;
+//             font-size: 8rem;
+//             font-weight: 300;
+//             letter-spacing: 25px;
+//             text-transform: uppercase;
+//             user-select: none;
+//             width: 100%;
+//         }
+//
+//         h2 {
+//             color: #222;
+//             font-family: "Lato", sans-serif;
+//             font-size: 3rem;
+//             font-weight: 400;
+//             letter-spacing: 10px;
+//             margin-top: 4rem;
+//             text-transform: uppercase;
+//             user-select: none;
+//             width: 100%;
+//         }
+//
+//         button {
+//             background-color: transparent;
+//             border: 2px solid #222;
+//             border-radius: 3.6rem;
+//             color: #222;
+//             font-family: "Lato", sans-serif;
+//             font-size: 2.2rem;
+//             letter-spacing: 3px;
+//             margin-top: 4.6rem;
+//             padding: 1.6rem 9rem;
+//             user-select: none;
+//             text-transform: uppercase;
+//             transition: background-color .5s ease, color .5s ease;
+//
+//             &:hover, &:active, &:focus {
+//                 background-color: #222;
+//                 color: $white;
+//             }
+//         }
+//     }
+// }

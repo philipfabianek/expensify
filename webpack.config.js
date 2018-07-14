@@ -46,6 +46,36 @@ module.exports = (env) => {
                             }
                         ]
                     })
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg|ico)$/i,
+                    loaders: [
+                        {
+                            loader: "file-loader",
+                            options: {
+                                hash: "sha512",
+                                name: "[hash].[ext]"
+                            }
+                        },
+                        {
+                            loader: "image-webpack-loader",
+                            query: {
+                                mozjpeg: {
+                                  progressive: true,
+                                },
+                                gifsicle: {
+                                  interlaced: false,
+                                },
+                                optipng: {
+                                  optimizationLevel: 4,
+                                },
+                                pngquant: {
+                                  quality: '75-90',
+                                  speed: 3,
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         },
