@@ -21,6 +21,9 @@ module.exports = (env) => {
             path: path.join(__dirname, "public", "dist"),
             filename: "bundle.js"
         },
+        node: {
+            fs: "empty"
+        },
         module: {
             rules: [
                 {
@@ -35,15 +38,11 @@ module.exports = (env) => {
                             {
                                 loader: "css-loader",
                                 options: {
-                                    sourceMap: true
+                                    importLoaders: 1
                                 }
                             },
-                            {
-                                loader: "sass-loader",
-                                options: {
-                                    sourceMap: true
-                                }
-                            }
+                            "postcss-loader",
+                            "sass-loader"
                         ]
                     })
                 },
@@ -90,11 +89,11 @@ module.exports = (env) => {
                 "process.env.FIREBASE_MESSAGING_SENDER_ID": JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
             })
         ],
-        devtool: isProduction ? "source-map" : "inline-source-map",
         devServer: {
             contentBase: path.join(__dirname, "public"),
             historyApiFallback: true,
-            publicPath: "/dist/"
+            publicPath: "/dist/",
+            port: 3000
         }
     };
 };
