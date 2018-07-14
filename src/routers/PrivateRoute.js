@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 // import TopHeader from "./../components/new/TopHeader";
-import Interface from "./../components/new/Interface";
+import Interface from "./../components/interface/Interface";
 // import Header from "./../components/Header";
 
 export const PrivateRoute = ({

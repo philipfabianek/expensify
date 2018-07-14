@@ -2,11 +2,11 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import createHistory from "history/createBrowserHistory";
 
-import AddExpense from "./../components/AddExpense";
-import EditExpense from "./../components/EditExpense";
-import Dashboard from "./../components/Dashboard";
-import LoginPage from "./../components/LoginPage";
-import NotFoundPage from "./../components/NotFoundPage";
+import AddExpense from "./../components/add-expense/AddExpense";
+import EditExpense from "./../components/edit-expense/EditExpense";
+import Dashboard from "./../components/dashboard/Dashboard";
+import LoginPage from "./../components/login/LoginPage";
+import NotFoundPage from "./../components/not-found/NotFoundPage";
 
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";

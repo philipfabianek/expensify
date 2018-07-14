@@ -1,0 +1,31 @@
+.loading-screen {
+    & {
+        // backgroundcolor: #3f51b5;
+        background-color: #e3e3e3;
+        height: 100vh;
+        position: relative;
+        width: 100%;
+    }
+
+    &__content {
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-100%);
+        width: 100%;
+    }
+
+    h1 {
+        color: $white;
+        // font-family: "Roboto", sans-serif;
+        font-size: 48px;
+        // font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    &__circle {
+        margin: 0 auto;
+        // margin-top: 2rem;
+    }
+}
