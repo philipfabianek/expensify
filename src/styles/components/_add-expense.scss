@@ -1,0 +1,23 @@
+.add-expense {
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+
+    @media screen and (min-width: 680px) {
+        margin-top: 20px;
+    }
+
+    @media screen and (min-width: 960px) {
+        padding-left: 10px;
+        position: static;
+        left: auto;
+        transform: none;
+    }
+
+    @media screen and (min-width: 1220px) {
+        padding: 0;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+}

@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import "normalize.css/normalize.css";
-import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
+import "./styles/styles.scss";
 
 import { startSetExpenses } from "./actions/expenses";
 import { login, logout } from "./actions/auth";

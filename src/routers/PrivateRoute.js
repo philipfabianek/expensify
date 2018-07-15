@@ -19,7 +19,9 @@ export const PrivateRoute = ({
                     <div>
                         {/* <TopHeader /> */}
                         {/* <Header /> */}
-                        <Interface>
+                        <Interface
+                            {...props}
+                        >
                             <Component {...props} />
                         </Interface>
                     </div>

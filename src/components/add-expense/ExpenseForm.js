@@ -2,6 +2,10 @@ import React from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 export default class ExpenseForm extends React.Component {
     constructor(props) {
         super(props);
@@ -61,38 +65,70 @@ export default class ExpenseForm extends React.Component {
     };
 
     render() {
+        if (typeof window !== "undefined") {
+            document.onkeydown = (event) => {
+                if (event.keyCode == 13) {
+                    this.onSubmit();
+                }
+            };
+        };
+
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
+            <div className="expense__form">
+                {
+                    this.state.error &&
+                    <Typography variant="subheading" color="error">
+                        {this.state.error}
+                    </Typography>
+                }
                 <form onSubmit={this.onSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        autoFocus
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}
-                    />
-                    <SingleDatePicker
-                        date={this.state.createdAt}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusChange={this.onFocusChange}
-                        numberOfMonths={1}
-                        isOutsideRange={() => false}
-                    />
-                    <textarea
-                        placeholder="Add a note for your expense (optional)"
-                        value={this.state.note}
-                        onChange={this.onNoteChange}
-                    >
-                    </textarea>
-                    <button>Add Expense</button>
+                    <div className="expense__form__input">
+                        <TextField
+                            autoFocus
+                            label="Description"
+                            type="text"
+                            value={this.state.description}
+                            onChange={this.onDescriptionChange}
+                        />
+                    </div>
+                    <div className="expense__form__input">
+                        <TextField
+                            label="Amount ($)"
+                            type="text"
+                            type="text"
+                            value={this.state.amount}
+                            onChange={this.onAmountChange}
+                        />
+                    </div>
+                    <div className="expense__form__textarea">
+                        <TextField
+                            className="AAAAAAAAA"
+                            label="Note"
+                            multiline
+                            rowsMax="6"
+                            value={this.state.note}
+                            onChange={this.onNoteChange}
+                        />
+                    </div>
+                    <div className="expense__form__date">
+                        <SingleDatePicker
+                            date={this.state.createdAt}
+                            onDateChange={this.onDateChange}
+                            focused={this.state.calendarFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                        />
+                    </div>
+                    <div className="expense__form__button">
+                        <Button
+                            color="primary"
+                            type="submit"
+                            variant="contained"
+                        >
+                            Add Expense
+                        </Button>
+                    </div>
                 </form>
             </div>
         )

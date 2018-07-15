@@ -11,7 +11,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
-import { mailFolderListItems, otherMailFolderListItems } from './tileData';
+import { MailFolderListItems, OtherMailFolderListItems } from './tileData';
 
 import { connect } from "react-redux";
 import { startLogout } from "./../../actions/auth";
@@ -70,17 +70,23 @@ class ResponsiveDrawer extends React.Component {
 
     render() {
         const { classes, theme } = this.props;
+        const url = this.props.location.pathname;
 
         const drawer = (
             <div>
                 <div className={classes.toolbar} />
                 <Divider />
                     <List>
-                        {mailFolderListItems}
+                        <MailFolderListItems
+                            url={url}
+                        />
                     </List>
                 <Divider />
                 <List>
-                    {otherMailFolderListItems}
+                    <OtherMailFolderListItems
+                        startLogout={this.props.startLogout}
+                        url={url}
+                    />
                 </List>
             </div>
         );
@@ -135,10 +141,12 @@ class ResponsiveDrawer extends React.Component {
                         {drawer}
                     </Drawer>
                 </Hidden>
-                <main className={classes.content}>
+                <main className={classes.content + " interface__content-container"}>
                     <div className={classes.toolbar} />
                     {/* <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography> */}
-                    {this.props.children}
+                    <div className="interface__content">
+                        {this.props.children}
+                    </div>
                 </main>
             </div>
         );

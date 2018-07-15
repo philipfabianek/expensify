@@ -5,6 +5,8 @@ import { startAddExpense } from "./../../actions/expenses";
 
 import ExpenseForm from "./ExpenseForm";
 
+import Typography from '@material-ui/core/Typography';
+
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
         this.props.startAddExpense(expense);
@@ -13,8 +15,11 @@ export class AddExpensePage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Add Expense</h1>
+            <div className="add-expense">
+                {/* <h1>Add Expense</h1> */}
+                <Typography variant="headline" color="inherit">
+                    Add Expense
+                </Typography>
                 <ExpenseForm
                     onSubmit={this.onSubmit}
                 />
