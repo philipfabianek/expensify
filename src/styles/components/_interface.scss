@@ -8,6 +8,19 @@
     }
 
     &__content {
-        
+
+    }
+
+    &__menu {
+        padding-top: 21px;
+        padding-left: 16px;
+
+        @media screen and (min-width: 0px) and (orientation: landscape) {
+            padding-top: 16px;
+        }
+
+        @media screen and (min-width: 600px) {
+            padding-top: 28px;
+        }
     }
 }

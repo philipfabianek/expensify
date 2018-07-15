@@ -70,22 +70,29 @@ class ResponsiveDrawer extends React.Component {
 
     render() {
         const { classes, theme } = this.props;
-        const url = this.props.location.pathname;
+        const path = this.props.location.pathname;
 
         const drawer = (
             <div>
-                <div className={classes.toolbar} />
+                <div className={classes.toolbar}>
+                    <Typography
+                        className="interface__menu"
+                        variant="title"
+                    >
+                        Menu
+                    </Typography>
+                </div>
                 <Divider />
                     <List>
                         <MailFolderListItems
-                            url={url}
+                            path={path}
                         />
                     </List>
                 <Divider />
                 <List>
                     <OtherMailFolderListItems
                         startLogout={this.props.startLogout}
-                        url={url}
+                        path={path}
                     />
                 </List>
             </div>

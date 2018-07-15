@@ -1,23 +1,42 @@
-import React from "react";
+import React from 'react';
 import { connect } from "react-redux";
+import { withStyles } from '@material-ui/core/styles';
 
 import selectExpenses from "./../../selectors/expenses";
 
 import ExpenseListItem from "./ExpenseListItem";
 
-export const ExpenseList = (props) => (
-    <div>
-        {
-            props.expenses.length === 0 ? (
-                <p>No expenses.</p>
-            ) : (
-                props.expenses.map((expense) => {
-                    return <ExpenseListItem {...expense} key={expense.id} />;
-                })
-            )
-        }
-    </div>
-);
+const styles = theme => ({
+    root: {
+        width: '100%',
+    },
+});
+
+class ExpenseList extends React.Component {
+    render() {
+        console.log(this.props.expenses);
+        const { classes } = this.props;
+
+        return (
+            <div className={classes.root}>
+                {
+                    this.props.expenses.length === 0 ? (
+                        <p>No expenses.</p>
+                    ) : (
+                        this.props.expenses.map((expense) => {
+                            return (
+                                <ExpenseListItem
+                                    {...expense}
+                                    key={expense.id}
+                                />
+                            )
+                        })
+                    )
+                }
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -25,7 +44,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-// from connect() we get back the function
-// we have to call it with the component
-// to get back the connected component
-export default connect(mapStateToProps)(ExpenseList);
+export default connect(mapStateToProps)(withStyles(styles)(ExpenseList));

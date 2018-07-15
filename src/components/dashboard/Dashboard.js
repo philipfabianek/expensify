@@ -12,8 +12,8 @@ const ExpenseDashboardPage = (props) => (
             Dashboard
         </Typography>
 
-        <ExpensesSummary />
-        <ExpenseListFilters />
+        {/* <ExpensesSummary /> */}
+        {/* <ExpenseListFilters /> */}
         <ExpenseList />
     </div>
 );
