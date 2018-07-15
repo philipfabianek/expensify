@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 
 import selectExpenses from "./../../selectors/expenses";
+import { startRemoveExpense } from "./../../actions/expenses";
 
 import ExpenseListItem from "./ExpenseListItem";
 
@@ -14,11 +15,11 @@ const styles = theme => ({
 
 class ExpenseList extends React.Component {
     render() {
-        console.log(this.props.expenses);
+        // console.log(this.props.expenses);
         const { classes } = this.props;
 
         return (
-            <div className={classes.root}>
+            <div className={classes.root + " dashboard__content"}>
                 {
                     this.props.expenses.length === 0 ? (
                         <p>No expenses.</p>
@@ -28,6 +29,7 @@ class ExpenseList extends React.Component {
                                 <ExpenseListItem
                                     {...expense}
                                     key={expense.id}
+                                    startRemoveExpense={this.props.startRemoveExpense}
                                 />
                             )
                         })
@@ -44,4 +46,8 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(ExpenseList));
+const mapDispatchToProps = (dispatch, props) => ({
+    startRemoveExpense: (id) => dispatch(startRemoveExpense(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ExpenseList));

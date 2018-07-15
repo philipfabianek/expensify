@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
+
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
+
+// import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Link } from "react-router-dom";
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import moment from "moment";
 import numeral from "numeral";
@@ -44,11 +49,14 @@ class ExpenseItem extends React.Component {
         const { expanded } = this.state;
 
         const {
+            id,
             amount,
             description,
             createdAt,
             note
         } = this.props;
+
+        // console.log(id);
 
         return (
             <ExpansionPanel className="expense-list__panel" expanded={expanded === this.props.key} onChange={this.handleChange(this.props.key)}>
@@ -62,6 +70,25 @@ class ExpenseItem extends React.Component {
                     <Typography className={classes.thirdHeading}>
                         {description}
                     </Typography>
+                    <IconButton
+                        aria-label="Delete"
+                        className={classes.button}
+                        style={{
+                            position: "absolute",
+                            right: "50px",
+                            top: "50%",
+                            transform: "translateY(-50%)"
+                        }}
+                    >
+                        <DeleteIcon
+                            onClick={this.props.startRemoveExpense.bind(this, id)}
+                            style={{
+                                position: "absolute",
+                                left: "50%",
+                                transform: "translateX(-50%)"
+                            }}
+                        />
+                    </IconButton>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography>
