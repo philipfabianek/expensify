@@ -13,10 +13,13 @@ const styles = theme => ({
     },
 });
 
+import selectImportantExpenses from "./../../selectors/important";
+
 class ExpenseList extends React.Component {
     render() {
         // console.log(this.props.expenses);
         const { classes } = this.props;
+        // console.log(selectImportantExpenses(this.props.expenses));
 
         return (
             <div className={classes.root + " dashboard__content"}>

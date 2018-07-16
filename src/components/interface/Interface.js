@@ -57,6 +57,11 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
     },
+    topList: {
+        [theme.breakpoints.up('md')]: {
+            marginTop: "20px"
+        },
+    },
 });
 
 class ResponsiveDrawer extends React.Component {
@@ -83,7 +88,9 @@ class ResponsiveDrawer extends React.Component {
                     </Typography>
                 </div>
                 <Divider />
-                    <List>
+                    <List
+                        className={classes.topList}
+                    >
                         <MailFolderListItems
                             path={path}
                         />

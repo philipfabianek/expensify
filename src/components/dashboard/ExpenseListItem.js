@@ -47,7 +47,7 @@ class ExpenseItem extends React.Component {
             typeof event.target.getAttribute("d") !== "undefined" &&
             !!event.target.getAttribute("d")
         ) {
-            if (event.target.getAttribute("d").length > 50) {
+            if (event.target.getAttribute("d").length === 77) {
                 return true;
             }
         } else if (
@@ -64,7 +64,7 @@ class ExpenseItem extends React.Component {
     };
 
     removeExpense() {
-        this.props.startRemoveExpense(this.props.id);
+        // this.props.startRemoveExpense(this.props.id);
     };
 
     render() {

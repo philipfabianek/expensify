@@ -73,7 +73,16 @@ export const MailFolderListItems = (props) => {
                 <ListItemText primary="Edit expense" />
             </ListItem>
 
-            <ListItem button>
+            <ListItem
+                button
+                component={NavLink}
+                to="/important"
+                style={path === "/important" ?
+                    {
+                        backgroundColor: "rgba(0, 0, 0, .16)"
+                    } : {}
+                }
+            >
                 <ListItemIcon>
                     <StarIcon />
                 </ListItemIcon>
