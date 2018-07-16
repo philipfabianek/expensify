@@ -35,13 +35,36 @@ const styles = theme => ({
 
 class ExpenseItem extends React.Component {
     state = {
-        expanded: null,
+        expanded: false,
     };
 
-    handleChange = panel => (event, expanded) => {
-        this.setState({
-            expanded: expanded ? panel : false,
-        });
+    handleChange(event) {
+        // const string = event.target.getAttribute("d");
+
+        if (event.target.tagName === "BUTTON") {
+            return true;
+        } else if (
+            typeof event.target.getAttribute("d") !== "undefined" &&
+            !!event.target.getAttribute("d")
+        ) {
+            if (event.target.getAttribute("d").length > 50) {
+                return true;
+            }
+        } else if (
+            event.target.tagName === "svg"
+        ) {
+            if (event.target.getAttribute("class").includes("SPECIAL-CLASS")) {
+                return true;
+            }
+        }
+
+        this.setState(() => ({
+            expanded: !this.state.expanded
+        }));
+    };
+
+    removeExpense() {
+        this.props.startRemoveExpense(this.props.id);
     };
 
     render() {
@@ -49,17 +72,23 @@ class ExpenseItem extends React.Component {
         const { expanded } = this.state;
 
         const {
-            id,
+            // id,
             amount,
             description,
             createdAt,
             note
         } = this.props;
 
-        // console.log(id);
-
         return (
-            <ExpansionPanel className="expense-list__panel" expanded={expanded === this.props.key} onChange={this.handleChange(this.props.key)}>
+            <ExpansionPanel
+                className="expense-list__panel"
+                expanded={this.state.expanded}
+                //     this.state.expanded ?
+                //     this.state.expanded === this.props.key :
+                //     false
+                // }
+                onChange={this.handleChange.bind(this)}
+            >
                 <ExpansionPanelSummary className="pointer" expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>
                         {moment(createdAt).format("MMMM Do, YYYY")}
@@ -72,7 +101,8 @@ class ExpenseItem extends React.Component {
                     </Typography>
                     <IconButton
                         aria-label="Delete"
-                        className={classes.button}
+                        className={classes.button + " SPECIAL-CLASS"}
+                        onClick={this.removeExpense.bind(this)}
                         style={{
                             position: "absolute",
                             right: "50px",
@@ -81,7 +111,7 @@ class ExpenseItem extends React.Component {
                         }}
                     >
                         <DeleteIcon
-                            onClick={this.props.startRemoveExpense.bind(this, id)}
+                            className="SPECIAL-CLASS"
                             style={{
                                 position: "absolute",
                                 left: "50%",
