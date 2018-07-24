@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 
-import selectExpenses from "./../../selectors/expenses";
+import selectImportantExpenses from "./../../selectors/expenses-important";
 import { startEditExpense, startRemoveExpense } from "./../../actions/expenses";
 
-import ExpenseListItem from "./ExpenseListItem";
+import ExpenseListItem from "./../dashboard/ExpenseListItem";
 
 const styles = theme => ({
     root: {
@@ -42,7 +42,7 @@ class ExpenseList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        expenses: selectExpenses(state.expenses, state.filters)
+        expenses: selectImportantExpenses(state.expenses)
     };
 };
 

@@ -11,7 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
+import ImportantIcon from '@material-ui/icons/Star';
 import DeleteIcon from "@material-ui/icons/Delete";
+
+import yellow from '@material-ui/core/colors/yellow';
 
 import moment from "moment";
 import numeral from "numeral";
@@ -39,7 +42,8 @@ class ExpenseItem extends React.Component {
     };
 
     handleChange(event) {
-        // const string = event.target.getAttribute("d");
+        // onst string = event.target.getAttribute("d");
+        // console.log(event.target);
 
         if (event.target.tagName === "BUTTON") {
             return true;
@@ -48,6 +52,10 @@ class ExpenseItem extends React.Component {
             !!event.target.getAttribute("d")
         ) {
             if (event.target.getAttribute("d").length === 77) {
+                return true;
+            }
+
+            if (event.target.getAttribute("d").length === 88) {
                 return true;
             }
         } else if (
@@ -64,7 +72,13 @@ class ExpenseItem extends React.Component {
     };
 
     removeExpense() {
-        // this.props.startRemoveExpense(this.props.id);
+        this.props.startRemoveExpense(this.props.id);
+    };
+
+    makeImportant() {
+        this.props.startEditExpense(this.props.id, {
+            isImportant: !this.props.isImportant
+        });
     };
 
     render() {
@@ -113,6 +127,27 @@ class ExpenseItem extends React.Component {
                         <DeleteIcon
                             className="SPECIAL-CLASS"
                             style={{
+                                position: "absolute",
+                                left: "50%",
+                                transform: "translateX(-50%)"
+                            }}
+                        />
+                    </IconButton>
+                    <IconButton
+                        aria-label="Make Important"
+                        className={classes.button}
+                        onClick={this.makeImportant.bind(this)}
+                        style={{
+                            position: "absolute",
+                            right: "95px",
+                            top: "50%",
+                            transform: "translateY(-50%)"
+                        }}
+                    >
+                        <ImportantIcon
+                            className="SPECIAL-CLASS"
+                            style={{
+                                color: this.props.isImportant ? "#ecd613" : "",
                                 position: "absolute",
                                 left: "50%",
                                 transform: "translateX(-50%)"

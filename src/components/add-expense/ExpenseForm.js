@@ -59,7 +59,8 @@ export default class ExpenseForm extends React.Component {
                 description: this.state.description.trim(),
                 amount: parseFloat(this.state.amount, 10) * 100,
                 createdAt: this.state.createdAt.valueOf(),
-                note: this.state.note.trim()
+                note: this.state.note.trim(),
+                isImportant: false
             });
         }
     };
@@ -126,7 +127,7 @@ export default class ExpenseForm extends React.Component {
                             type="submit"
                             variant="contained"
                         >
-                            Add Expense
+                            {this.props.buttonText}
                         </Button>
                     </div>
                 </form>

@@ -1,8 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import ExpenseForm from "./../add-expense/ExpenseForm";
 
 import { startRemoveExpense, startEditExpense } from "./../../actions/expenses";
+
+import ExpenseForm from "./../add-expense/ExpenseForm";
+
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 export class EditExpensePage extends React.Component {
     onSubmit = (expense) => {
@@ -17,12 +21,26 @@ export class EditExpensePage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="add-expense">
+                {/* <h1>Add Expense</h1> */}
+                <Typography variant="headline" color="inherit">
+                    Edit Expense
+                </Typography>
                 <ExpenseForm
                     expense={this.props.expense}
                     onSubmit={this.onSubmit}
+                    buttonText="Edit Expense"
                 />
-                <button onClick={this.onRemove}>Remove</button>
+                <Button
+                    color="primary"
+                    onClick={this.onRemove}
+                    style={{
+                        padding: "14px 40px",
+                    }}
+                    variant="contained"
+                >
+                    Remove Expense
+                </Button>
             </div>
         );
     };

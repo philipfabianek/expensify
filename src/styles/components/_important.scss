@@ -1,0 +1,28 @@
+.important {
+    & {
+        max-width: 900px;
+    }
+
+    @media screen and (min-width: 680px) {
+        margin-top: 20px;
+    }
+
+    &__content {
+        margin-top: 20px;
+
+        @media screen and (min-width: 960px) {
+            margin-top: 24px;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        padding-left: 10px;
+    }
+
+    @media screen and (min-width: 1460px) {
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 900px;
+    }
+}

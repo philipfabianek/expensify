@@ -22,6 +22,7 @@ export class AddExpensePage extends React.Component {
                 </Typography>
                 <ExpenseForm
                     onSubmit={this.onSubmit}
+                    buttonText="Add Expense"
                 />
             </div>
         )
