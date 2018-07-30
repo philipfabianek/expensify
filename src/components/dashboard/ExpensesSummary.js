@@ -11,7 +11,7 @@ export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
 
     return (
         <div>
-            <h1>
+            <h1 className="dashboard__summary">
                 Viewing {expenseCount} {expenseWord} totalling {formattedExpensesTotal}
             </h1>
         </div>

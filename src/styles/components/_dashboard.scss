@@ -25,4 +25,11 @@
         transform: translateX(-50%);
         width: 900px;
     }
+
+    &__summary {
+        font-family: "Lato", sans-serif;
+        font-size: 26px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
 }

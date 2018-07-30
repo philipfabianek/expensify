@@ -82,6 +82,8 @@ class ExpenseItem extends React.Component {
     };
 
     render() {
+        const position =  this.props.position;
+
         const { classes } = this.props;
         const { expanded } = this.state;
 
@@ -97,11 +99,13 @@ class ExpenseItem extends React.Component {
             <ExpansionPanel
                 className="expense-list__panel"
                 expanded={this.state.expanded}
-                //     this.state.expanded ?
-                //     this.state.expanded === this.props.key :
-                //     false
-                // }
                 onChange={this.handleChange.bind(this)}
+                style={{
+                    borderTopLeftRadius: position === "top" ? "2px" : 0,
+                    borderTopRightRadius: position === "top" ? "2px" : 0,
+                    borderBottomLeftRadius: position === "bottom" ? "2px" : 0,
+                    borderBottomRightRadius: position === "bottom" ? "2px" : 0,
+                }}
             >
                 <ExpansionPanelSummary className="pointer" expandIcon={<ExpandMoreIcon />}>
                     <Typography className={classes.heading}>

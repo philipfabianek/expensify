@@ -37,30 +37,51 @@ export class ExpenseListFilters extends React.Component {
     };
 
     render() {
+        console.log(this.props.filters);
+
         return (
-            <div>
-                <input
-                    type="text"
-                    value={this.props.filters.text}
-                    onChange={this.onTextChange}
-                />
-                <select
-                    value={this.props.filters.sortBy}
-                    onChange={this.onSortChange}
-                >
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-                <DateRangePicker
-                    startDate={this.props.filters.startDate}
-                    endDate={this.props.filters.endDate}
-                    onDatesChange={this.onDatesChange}
-                    focusedInput={this.state.calendarFocused}
-                    onFocusChange={this.onFocusChange}
-                    showClearDates={true}
-                    numberOfMonths={1}
-                    isOutsideRange={(expense) => false}
-                />
+            // <div>
+            //     <input
+            //         type="text"
+            //         value={this.props.filters.text}
+            //         onChange={this.onTextChange}
+            //     />
+            //     <select
+            //         value={this.props.filters.sortBy}
+            //         onChange={this.onSortChange}
+            //     >
+            //         <option value="date">Date</option>
+            //         <option value="amount">Amount</option>
+            //     </select>
+            //     <DateRangePicker
+            //         startDate={this.props.filters.startDate}
+            //         endDate={this.props.filters.endDate}
+            //         onDatesChange={this.onDatesChange}
+            //         focusedInput={this.state.calendarFocused}
+            //         onFocusChange={this.onFocusChange}
+            //         showClearDates={true}
+            //         numberOfMonths={1}
+            //         isOutsideRange={(expense) => false}
+            //     />
+            // </div>
+            <div className="filters">
+                <div className="filters__panel">
+                    <p
+                        className={`filters__panel__date ${this.props.filters.sortBy === "date" ? "filters__panel__date--selected" : ""}`}
+                        onClick={this.props.sortByDate}
+                    >
+                        Date{this.props.filters.sortBy === "date" ? " ↑" : ""}
+                    </p>
+                    <p
+                        className={`filters__panel__amount ${this.props.filters.sortBy === "amount" ? "filters__panel__amount--selected" : ""}`}
+                        onClick={this.props.sortByAmount}
+                    >
+                        Amount{this.props.filters.sortBy === "amount" ? " ↑" : ""}
+                    </p>
+                    <p className="filters__panel__description">
+                        Description
+                    </p>
+                </div>
             </div>
         );
     }
